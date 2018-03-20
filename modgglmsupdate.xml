@@ -6,7 +6,7 @@
 		<element>mod_gglms</element>
 		<type>module</type>
 		<folder></folder>
-		<version>1.3.9</version>
+		<version>1.3.10</version>
 		<infourl title="gglms  - github">https://github.com/GGallery/mod_gglms_caress</infourl>
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/GGallery/mod_gglms_caress/archive/master.zip</downloadurl>

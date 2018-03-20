@@ -119,6 +119,28 @@ where scaduto = 0 or scaduto is null";
             return array();
         }
     }
+
+    public static function getCorsiInScadenza(){
+
+        try {
+            $db = JFactory::getDbo();
+            $user = JFactory::getUser();
+            $userid = $user->get('id');
+            $query = $db->getQuery(true);
+            $query->select('u.id as id, u.titolo as titolo');
+            $query->from('#__gg_view_stato_user_corso as uc');
+            $query->join('inner', '#__gg_report_users as anagrafica on uc.id_anagrafica=anagrafica.id');
+            $query->join('inner', '#__gg_unit as u on uc.id_corso=u.id');
+            $query->where('IF(date(now())>DATE_ADD(u.data_fine, INTERVAL -30 DAY), IF(stato=0,1,0),0)=1  and anagrafica.id_user=' . $userid);
+            $db->setQuery($query);
+            return $db->loadObjectList();
+        }catch (Exception $e){
+
+            echo $e->getMessage();
+        }
+
+
+    }
 }
 
 ?>

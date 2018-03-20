@@ -1,5 +1,5 @@
 <?php
-$corsiabilitati = modgglmsHelper::getCorsi();
+//$corsiabilitati = modgglmsHelper::getCorsi();
 if($corsiabilitati[0])
 
 {
