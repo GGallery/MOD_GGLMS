@@ -1,0 +1,42 @@
+#alert {
+	background-image: url("infobox.png");
+	background-repeat: no-repeat;
+	background-size: 217px 91px;
+	height: 84px;
+	margin-left: -24px;
+	margin-top: -103px;
+	padding: 7px 25px;
+	position: absolute;
+	width: 171px;
+	z-index: 2500;
+	color: white;
+	line-height: 22px;
+	font-family: Verdana;
+}
+
+.big{
+	border: 5px solid red;
+}
+
+.modal{
+	display:none;
+}
+
+#glossary {
+	text-align: center;
+}
+
+.btn-glossary{
+	width: 50%;
+}
+
+#exitbtn {
+	position: relative;
+	right: 0px;
+}
+
+#exitbox
+{
+	text-align: right;
+	margin-top: -30px;
+}

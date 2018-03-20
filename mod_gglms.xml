@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+    type="module"
+    client="site"
+    method="upgrade"
+    version="3.5"
+    >
+    <name>wizard</name>
+    <author>GGallery</author>
+    <creationDate>September 2017</creationDate>
+    <copyright>Copyright (C) 2014 GGallery</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>info@ggallery.it</authorEmail>
+    <authorUrl>www.ggallery.it</authorUrl>
+    <version>1.3.9</version>
+    <description>Caress Wizard Module</description>
+    <files>
+        <filename module="mod_wizard">mod_wizard.php</filename>
+        <folder>tmpl</folder>
+        <folder>language</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>		
+        <filename>mod_wizard.xml</filename>
+        <filename>mod_wizard.css</filename>
+        <filename>infobox.png</filename>
+    </files>
+
+    <updateservers>
+        <server type="extension" element="com_wizard" name="wizard" priority="1">https://raw.githubusercontent.com/GGallery/mod_wizard_caress/master/modwizardupdate.xml</server>
+    </updateservers>
+
+
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="tipo"
+                    type="list"
+                    disable="separator"
+                    label="Visuale"
+                    description="Varia la vista ottuenuta"
+                    default="logo">
+                    <option value="barranav">Barra di navigazione</option>
+                    <option value="glossario">Pulsante glossario</option>
+                    <!--<option value="attestati">Attestati Conseguiti</option>-->
+                    <!--<option value="corsiabilitati">I miei corsi</option>-->
+
+                </field>
+
+                <field
+                        name="glossario"
+                        type="editor"
+                        disable="separator"
+                        label="Glossario"
+                        description="Glossario"
+                        default=""
+                        filter="safehtml"
+
+                />
+            </fieldset>
+
+
+        </fields>
+    </config>
+    
+</extension>
