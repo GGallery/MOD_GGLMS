@@ -1,5 +1,5 @@
 <?php
-$attestati = modwizardHelper::getAttestati();
+$attestati = modgglmsHelper::getAttestati();
 if($attestati[0])
 {
 	$db = JFactory::getDbo();
@@ -12,7 +12,7 @@ if($attestati[0])
 		if(strlen($attestato['corso'])>50)
 			$attestato['corso']=substr($attestato['corso'], 0,20)."...";
 
-		echo '<li><a title="'.$title.'" href="index.php/component/wizard/attestato?student='.$userid.'&idq='.$attestato['id'].'" target="_blank">'.$attestato['corso'].'</a></li>';
+		echo '<li><a title="'.$title.'" href="index.php/component/gglms/attestato?student='.$userid.'&idq='.$attestato['id'].'" target="_blank">'.$attestato['corso'].'</a></li>';
 	}
 	echo "</ul>";
 }

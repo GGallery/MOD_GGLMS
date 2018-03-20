@@ -17,7 +17,7 @@ if($corsiabilitati[0])
 		if(strlen($corsoabilitato['corso'])>40)
 			$corsoabilitato['corso']=substr($corsoabilitato['corso'], 0,$params->get('lughezzatestocorso'))."...";
 
-		echo '<li><a class="indice_corsi" title="'.$title.'" href="index.php/component/wizard/corso/'.$corsoabilitato['alias'].'.html" >'.$corsoabilitato['corso'].'</a>
+		echo '<li><a class="indice_corsi" title="'.$title.'" href="index.php/component/gglms/corso/'.$corsoabilitato['alias'].'.html" >'.$corsoabilitato['corso'].'</a>
 		<br>['.		$corsoabilitato['crediti'].' crediti]['.		$corsoabilitato['durata'].' ore]
 
 

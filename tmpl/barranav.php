@@ -1,22 +1,22 @@
-<div id="wizardbreadcrumbar">
+<div id="gglmsbreadcrumbar">
     <?php
 
     if(!$alert)
         $nav = '
         <ol class="breadcrumb">
         <span class="divider" style="margin-right: 10px;">
-                <img src="components/com_wizard/images/gufo.png" width="30" />
+                <img src="components/com_gglms/images/gufo.png" width="30" />
             You are working on:
         </span>
-    <li><a href="usecase2.html">Wizard</a></li>';
+    <li><a href="usecase2.html">gglms</a></li>';
     else
         $nav = '
         <ol class="breadcrumb big">
         <span class="divider" style="margin-right: 10px;">
-                <img src="components/com_wizard/images/gufo.png" width="50" />
-            Return on wizard :
+                <img src="components/com_gglms/images/gufo.png" width="50" />
+            Return on gglms :
         </span>
-    <li>Wizard</li>';
+    <li>gglms</li>';
 
     switch ($step){
 
@@ -125,7 +125,7 @@
 
 
     if($alert)
-        $nav .= '<li><div id="alert">You are working on framework, to come back to wizard click here!</div></li>';
+        $nav .= '<li><div id="alert">You are working on framework, to come back to gglms click here!</div></li>';
 
 
     $nav.="</ol>";
@@ -143,7 +143,7 @@
 if($step != ''){
 ?>
     <div id="exitbox">
-        <input type="button" class="btn btn-primary btn-small " id="exitbtn" value="Exit Wizard">
+        <input type="button" class="btn btn-primary btn-small " id="exitbtn" value="Exit gglms">
     </div>
 <?php
 }
@@ -159,7 +159,7 @@ if($step != ''){
         $("#exitbtn").click(function(){
             var url = window.location.href;
             url = encodeURI(url);
-            window.location.replace("index.php?option=com_wizard&task=wizardoff&url="+url);
+            window.location.replace("index.php?option=com_gglms&task=gglmsoff&url="+url);
 
         });
     });

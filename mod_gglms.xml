@@ -5,7 +5,7 @@
     method="upgrade"
     version="3.5"
     >
-    <name>wizard</name>
+    <name>gglms</name>
     <author>GGallery</author>
     <creationDate>September 2017</creationDate>
     <copyright>Copyright (C) 2014 GGallery</copyright>
@@ -13,20 +13,20 @@
     <authorEmail>info@ggallery.it</authorEmail>
     <authorUrl>www.ggallery.it</authorUrl>
     <version>1.3.9</version>
-    <description>Caress Wizard Module</description>
+    <description>Caress gglms Module</description>
     <files>
-        <filename module="mod_wizard">mod_wizard.php</filename>
+        <filename module="mod_gglms">mod_gglms.php</filename>
         <folder>tmpl</folder>
         <folder>language</folder>
         <filename>helper.php</filename>
         <filename>index.html</filename>		
-        <filename>mod_wizard.xml</filename>
-        <filename>mod_wizard.css</filename>
+        <filename>mod_gglms.xml</filename>
+        <filename>mod_gglms.css</filename>
         <filename>infobox.png</filename>
     </files>
 
     <updateservers>
-        <server type="extension" element="com_wizard" name="wizard" priority="1">https://raw.githubusercontent.com/GGallery/mod_wizard_caress/master/modwizardupdate.xml</server>
+        <server type="extension" element="com_gglms" name="gglms" priority="1">https://raw.githubusercontent.com/GGallery/mod_gglms_caress/master/modgglmsupdate.xml</server>
     </updateservers>
 
 

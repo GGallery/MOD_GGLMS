@@ -1,7 +1,7 @@
 <?php
 defined('_JEXEC') or die;
 
-class modwizardHelper {
+class modgglmsHelper {
     private static $_attestati;
     private static $_corsi;
 
