@@ -127,13 +127,36 @@ where scaduto = 0 or scaduto is null";
             $user = JFactory::getUser();
             $userid = $user->get('id');
             $query = $db->getQuery(true);
-            $query->select('u.id as id, u.titolo as titolo');
-            $query->from('#__gg_view_stato_user_corso as uc');
-            $query->join('inner', '#__gg_report_users as anagrafica on uc.id_anagrafica=anagrafica.id');
-            $query->join('inner', '#__gg_unit as u on uc.id_corso=u.id');
-            $query->where('IF(date(now())>DATE_ADD(u.data_fine, INTERVAL -30 DAY), IF(stato=0,1,0),0)=1  and anagrafica.id_user=' . $userid);
+            $query->select('anagrafica.id as id, anagrafica.id_event_booking as eb');
+            $query->from('#__gg_report_users as anagrafica');
+            $query->where('id_user='.$userid);
             $db->setQuery($query);
-            return $db->loadObjectList();
+            $id_anagrafici=$db->loadObjectList();
+            $result=[];
+            foreach ($id_anagrafici as $anagrafico) {
+                $query = $db->getQuery(true);
+                $query->select('u.titolo as titolo');
+                $query->from('#__gg_view_stato_user_corso as uc');
+                $query->join('inner', '#__gg_unit as u on uc.id_corso=u.id');
+                $query->where('IF(date(now())>DATE_ADD(u.data_fine, INTERVAL -30 DAY), IF(stato=0,1,0),0)=1  and uc.id_anagrafica=' . $anagrafico->id);
+                $db->setQuery($query);
+                $array_corsi=$db->loadAssocList();
+                if ($array_corsi==null){
+                    $query = $db->getQuery(true);
+                    $query->select('titolo');
+                    $query->from('#__gg_unit');
+                    $query->where('id_event_booking=' . $anagrafico->eb);
+                    $db->setQuery($query);
+                    $titolo=$db->loadResult();
+                    array_push($result,$titolo);
+                }else{
+                    foreach ($array_corsi as $corso) {
+                        array_push($result, $corso['titolo']);
+                    }
+                }
+            }
+
+            return $result;
         }catch (Exception $e){
 
             echo $e->getMessage();

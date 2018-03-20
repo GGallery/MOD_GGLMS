@@ -8,7 +8,7 @@ if(count($corsiinscadenza)>0) {
     echo '<ul>';
 	foreach ($corsiinscadenza as $corso){
 
-		echo '<li>'.$corso->titolo.'</li>';
+		echo '<li>'.$corso.'</li>';
 
 	}
 	echo '</ul></div>';
