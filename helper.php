@@ -135,23 +135,72 @@ where scaduto = 0 or scaduto is null";
             $result=[];
             foreach ($id_anagrafici as $anagrafico) {
                 $query = $db->getQuery(true);
-                $query->select('u.titolo as titolo');
+                $query->select('u.titolo as titolo, uc.stato as stato,IF(date(now())>DATE_ADD(u.data_fine, INTERVAL -30 DAY), IF(stato=0,1,0),0) as alert');
                 $query->from('#__gg_view_stato_user_corso as uc');
                 $query->join('inner', '#__gg_unit as u on uc.id_corso=u.id');
-                $query->where('IF(date(now())>DATE_ADD(u.data_fine, INTERVAL -30 DAY), IF(stato=0,1,0),0)=1  and uc.id_anagrafica=' . $anagrafico->id);
+                $query->where('uc.id_anagrafica=' . $anagrafico->id);
                 $db->setQuery($query);
-                $array_corsi=$db->loadAssocList();
+                $array_corsi=$db->loadObjectList();
+
                 if ($array_corsi==null){
+
+
+                    $db = JFactory::getDbo();
                     $query = $db->getQuery(true);
-                    $query->select('titolo');
+                    $query->select('id,accesso');
                     $query->from('#__gg_unit');
-                    $query->where('id_event_booking=' . $anagrafico->eb);
+                    $query->where('is_corso=1');
+
                     $db->setQuery($query);
-                    $titolo=$db->loadResult();
-                    array_push($result,$titolo);
+                    $corsi_metodi=$db->loadObjectList();
+
+                    foreach ($corsi_metodi as $metodo){
+
+                        switch ($metodo->accesso) {
+
+                            case 'iscrizioneeb':
+
+                                if ($anagrafico->eb != null && $anagrafico->eb != 0) {
+                                    $query = $db->getQuery(true);
+                                    $query->select('titolo');
+                                    $query->from('#__gg_unit');
+                                    $query->where('id_event_booking=' . $anagrafico->eb . ' and id=' . $metodo->id);
+                                    $db->setQuery($query);
+                                    $titolo = $db->loadResult();
+
+                                    if ($titolo != null){
+                                        array_push($result, $titolo . ' stato: non iniziato');
+                                        break 2;
+                                    }
+                                }
+
+                                break ;
+                            case 'gruppo':
+
+                                $query_ = $db->getQuery(true);
+                                $query_->select('u.titolo');
+                                $query_->from('#__gg_usergroup_map as m ');
+                                $query_->join('inner', '#__user_usergroup_map as um on m.idgruppo=um.group_id');
+                                $query_->join('inner', '#__gg_report_users as anagrafica on um.user_id=anagrafica.id_user');
+                                $query_->join('inner', '#__gg_unit as u on m.idunita=u.id');
+                                $query_->where(' anagrafica.id=' . $anagrafico->id);
+                                $db->setQuery($query_);
+                                $titolo = $db->loadResult();
+
+                                if ($titolo != null) {
+                                    array_push($result, $titolo . ' stato: non iniziato');
+                                    break 2;
+                                }
+                                break ;
+                        }
+
+
+                    }
+
                 }else{
                     foreach ($array_corsi as $corso) {
-                        array_push($result, $corso['titolo']);
+                        if ($corso->stato==0 && $corso->alert==1)
+                            array_push($result, $corso->titolo.' stato: non completo');
                     }
                 }
             }
@@ -161,6 +210,12 @@ where scaduto = 0 or scaduto is null";
 
             echo $e->getMessage();
         }
+
+
+    }
+
+    private static function getCorsiMetodi(){
+
 
 
     }
