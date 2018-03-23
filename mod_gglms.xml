@@ -46,6 +46,7 @@
                     <option value="attestati">Attestati Conseguiti</option>
                     <option value="corsiabilitati">I miei corsi</option>
                     <option value="corsiinscadenza">Corsi in scadenza</option>
+                    <option value="news">News</option>
 
                 </field>
                 <field
@@ -54,7 +55,7 @@
                         label="Categoria"
                         default="205"
                         description="Scegli_la_categoria"
-
+                        showon="tipo:news"
                         query="SELECT id as value, titolo as lastcont FROM #__gg_unit">
 
                 </field>
