@@ -214,26 +214,21 @@ where scaduto = 0 or scaduto is null";
 
     }
 
-    public static function getUltimoArticolo($unitalastcontenuto){
+    public static function getUltimoArticolo($unit_id){
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('*');
+        $query->select('c.alias, c.titolo');
         $query->from('#__gg_contenuti as c');
-        $query->where('id=(select max(id) from #__gg_contenuti as c inner join #__gg_unit_map as um  on um.idcontenuto=c.id where um.idunita='.$unitalastcontenuto.') ');
+        $query->join('inner', '#__gg_unit_map AS m ON c.id = m.idcontenuto');
+        $query->join('inner', '#__gg_unit AS u ON m.idunita = u.id');
+        $query->where('u.id ='.$unit_id );
+        $query->order('c.id desc');
+        $query->setLimit('1');
+
         $db->setQuery($query);
-        $contenuto=$db->loadObjectList()[0];
+        $contenuto=$db->loadObject();
 
-
-        $url="index.php?option=com_gglms&view=contenuto&alias=".$contenuto->alias;
-        $url = "href='". JRoute::_($url)."'";
-        return '<A '.$url.'>'.$contenuto->titolo.'</A>';
-
-
-
+        return $contenuto;
     }
-
-
 }
-
-?>
