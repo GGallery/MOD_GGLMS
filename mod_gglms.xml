@@ -48,7 +48,16 @@
                     <option value="corsiinscadenza">Corsi in scadenza</option>
 
                 </field>
+                <field
+                        name="lastcont"
+                        type="sql"
+                        label="Categoria"
+                        default="205"
+                        description="Scegli_la_categoria"
+                        showon="tipo:corsiinscadenza"
+                        query="SELECT id as value, titolo as lastcont FROM #__gg_unit">
 
+                </field>
                 <field
                         name="glossario"
                         type="editor"

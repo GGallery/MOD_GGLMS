@@ -214,11 +214,26 @@ where scaduto = 0 or scaduto is null";
 
     }
 
-    private static function getCorsiMetodi(){
+    public static function getUltimoArticolo($unitalastcontenuto){
+
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*');
+        $query->from('#__gg_contenuti as c');
+        $query->where('id=(select max(id) from #__gg_contenuti as c inner join #__gg_unit_map as um  on um.idcontenuto=c.id where um.idunita='.$unitalastcontenuto.') ');
+        $db->setQuery($query);
+        $contenuto=$db->loadObjectList()[0];
+
+
+        $url="index.php?option=com_gglms&view=contenuto&alias=".$contenuto->alias;
+        $url = "href='". JRoute::_($url)."'";
+        return '<A '.$url.'>'.$contenuto->titolo.'</A>';
 
 
 
     }
+
+
 }
 
 ?>

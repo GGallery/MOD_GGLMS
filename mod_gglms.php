@@ -7,8 +7,9 @@ $step = $session->get('step');
 
 $app = JFactory::getApplication();
 $menu   = $app->getMenu()->getActive();
+if($menu)
+    $alert = (($menu->component != 'com_gglms') && $step!= ''  ) ? 1 : 0;
 
-$alert = (($menu->component != 'com_gglms') && $step!= ''  ) ? 1 : 0;
 
 $doc = JFactory::getDocument();
 $doc->addStyleSheet(JURI::root(true) ."/modules/mod_gglms/mod_gglms.css");
