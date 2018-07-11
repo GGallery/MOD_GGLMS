@@ -6,8 +6,8 @@ $userid = $user->get('id');
 //$userid=29036393; //UTENTE ASSENTE IN CORRISPONDENZA IVASS BIENNIO
 //$userid=469206393;//VOLPES
 
-$userid=51715375;//paladino
-$userid=246600032; //servetto
+//$userid=51715375;//paladino
+//$userid=246600032; //servetto
 if(utente_abilitato($userid)) {
     $display_state_esma="display:none";
     if(utente_abilitato_esma($userid)) {
@@ -44,7 +44,7 @@ if(utente_abilitato($userid)) {
                 <?php if($tot_esma>$ore_esma){?>
                     <b><?php echo $tot_esma?> ore entro il 30.9.2018: ti mancano <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_esma-round($ore_esma,2)?></b> ore</span> </b>
                 <?php }else{ ?>
-                    <b>hai completato il tuo aggiornamento ESMA con <?php echo round($ore_esma,2)?>ore</span></b>
+                    <b>hai completato il tuo percorso ESMA </b>
                 <?php }?>
             </div>
         </div>
@@ -71,7 +71,7 @@ if(utente_abilitato($userid)) {
                     <?php if($tot_ivass>$ore_ivass){ ?>
                         <?php echo $tot_ivass?> ore entro il 31.12.2018: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-round($ore_ivass,2)?> ore</b></span>
                     <?php } else { ?>
-                        <b>hai completato il tuo aggiornamento IVASS con <?php echo round($ore_ivass,2)?> ore</span></b>
+                        <b>hai completato il tuo percorso IVASS </b>
                     <?php } ?>
                 <?php }else{ echo "errore, all'utente non è attribuito un biennio IVASS";}?>
             </div>
@@ -138,7 +138,7 @@ function ore_esma($userid)
     // echo $query;
     $db->setQuery($query);
     $ore_res=$db->loadResult();
-
+    //echo 'ore_fad_esma:'.$ore_fad.'ore_esma_res:'.$ore_res;
     return $ore_fad+$ore_res;
 }
 
@@ -154,6 +154,7 @@ function ore_ivass($userid){
     $db->setQuery($query);
     $ore_res=$db->loadResult();
 //echo $ore_res;
+    //echo 'ore_fad_ivass:'.$ore_fad.'ore_esma_ivass:'.$ore_res;
     return $ore_res+$ore_fad;
 }
 
@@ -274,3 +275,5 @@ function getContenutiUnitaArrayList($item) {
 
 
 ?>
+
+
