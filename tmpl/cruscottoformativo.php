@@ -8,6 +8,9 @@ $userid = $user->get('id');
 
 //$userid=51715375;//paladino
 //$userid=246600032; //servetto
+//$userid=622389853; //lucarelli
+//$userid=327494204; //casano
+
 if(utente_abilitato($userid)) {
     $display_state_esma="display:none";
     if(utente_abilitato_esma($userid)) {
@@ -42,7 +45,7 @@ if(utente_abilitato($userid)) {
         <div class="row" style="background-color: rgba(209, 237, 245, 1)">
             <div class="col-md-12" style="margin-top: 20px; ">
                 <?php if($tot_esma>$ore_esma){?>
-                    <b><?php echo $tot_esma?> ore entro il 30.9.2018: ti mancano <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_esma-round($ore_esma,2)?></b> ore</span> </b>
+                    <b><?php echo $tot_esma?> ore entro il 30.9.2018: ti mancano <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_esma-intval($ore_esma,2)?></b> ore</span> </b>
                 <?php }else{ ?>
                     <b>hai completato il tuo percorso ESMA </b>
                 <?php }?>
@@ -69,7 +72,7 @@ if(utente_abilitato($userid)) {
             <div class="col-md-12" style="margin-top: 20px; ">
                 <?php if($tot_ivass>0){ ?>
                     <?php if($tot_ivass>$ore_ivass){ ?>
-                        <?php echo $tot_ivass?> ore entro il 31.12.2018: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-round($ore_ivass,2)?> ore</b></span>
+                        <?php echo $tot_ivass?> ore entro il 31.12.2018: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-intval($ore_ivass,2)?> ore</b></span>
                     <?php } else { ?>
                         <b>hai completato il tuo percorso IVASS </b>
                     <?php } ?>
@@ -128,8 +131,11 @@ function utente_abilitato_esma($userid)
 function ore_esma($userid)
 {
     $db = JFactory::getDbo();
-    $contenuti_esma=getContenutiTema(1);
-    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id where r.stato=1 and r.id_utente=" . $userid . " and c.id in (".$contenuti_esma.")";
+    //$contenuti_esma=getContenutiTema(1);
+
+    //$corsi_esma=getCorsiTema(1);
+    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso 
+              where r.stato=1 and e.id_tema like '%1%' and r.id_utente=".$userid;
     // echo $query;
     $db->setQuery($query);
     $ore_fad=$db->loadResult();
@@ -144,17 +150,17 @@ function ore_esma($userid)
 
 function ore_ivass($userid){
     $db = JFactory::getDbo();
-    $contenuti_ivass=getContenutiTema(2);
-
-    $query="select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id where r.stato=1 and r.id_utente=".$userid." and c.id in (".$contenuti_ivass.")";
+    //$contenuti_ivass=getContenutiTema(2);
+    //$corsi_ivass=getCorsiTema(2);
+    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso 
+              where r.stato=1 and e.id_tema like '%2%' and r.id_utente=".$userid;
     $db->setQuery($query);
     $ore_fad=$db->loadResult();
 
     $query="select sum(res.ore) from cc_crg_ggif_logres as res where id_utente=".$userid." and res.id_tema=2";
     $db->setQuery($query);
     $ore_res=$db->loadResult();
-//echo $ore_res;
-    //echo 'ore_fad_ivass:'.$ore_fad.'ore_esma_ivass:'.$ore_res;
+    //echo 'ore_fad_ivass:'.$ore_fad.'ore_res_ivass:'.$ore_res;
     return $ore_res+$ore_fad;
 }
 
@@ -176,104 +182,5 @@ function totale_ivass($userid){
     return $db->loadResult();
 
 }
-
-function getContenutiTema($id_tema){
-
-
-    $contenutiesma=array();
-    $db = JFactory::getDbo();
-    $query="select u.id from crg_gg_unit as u inner join crg_ggif_edizione_unita_gruppo as e on u.id=e.id_unita inner join cc_crg_ggif_corrispondenza_edizionefad_tema as t on t.id_edizione=e.id_edizione
-            where u.is_corso= 1 and t.id_tema=".$id_tema;
-
-    $db->setQuery($query);
-
-    $id_corsi_esma=$db->loadAssocList();
-    $result=null;
-    foreach ($id_corsi_esma as $id_corso_esma){
-
-        //echo $id_corso_esma['id'].'<br>';
-        array_push($contenutiesma,getContenutiArrayList($id_corso_esma['id']));
-
-    }
-    //var_dump($contenutiesma);
-    foreach ($contenutiesma[0] as $contenutoesma){
-
-        //echo $contenutoesma[0].['id'];
-        //var_dump($contenutoesma);
-        //echo $contenutoesma['id'];
-        $result=$result.$contenutoesma['id'].',';
-    }
-
-    //echo rtrim($result,',');
-    return rtrim($result,',');
-
-}
-
-function getContenutiArrayList($item=0){
-    $contenuti=array();
-    foreach (getContenutiUnitaArrayList($item) as $contenuto) {
-        array_push($contenuti, $contenuto);
-    }
-
-    $unitas=getSottoUnitaArrayList($item);
-
-    foreach ($unitas as $unita){
-
-        foreach (getContenutiUnitaArrayList($unita['id']) as $contenuto) {
-            array_push($contenuti, $contenuto);
-        }
-    }
-    return $contenuti;
-}
-
-function getSottoUnitaArrayList($item = 0) {
-    $tree = array();
-    $db = JFactory::getDbo();
-    $query = $db->getQuery(true);
-
-    $query->select('id');
-    $query->from('#__gg_unit');
-    $query->where("unitapadre=" . $item);
-
-    $db->setQuery($query);
-
-    $tmptree = $db->loadAssocList();
-    foreach ($tmptree as $item) {
-        array_push($tree, $item);
-        foreach (getSottoUnitaArrayList($item['id']) as $item2) {
-            //$item2['titolo'] = $item2['titolo'];
-            array_push($tree, $item2);
-        }
-
-    }
-    unset($tmptree);
-    return $tree;
-}
-
-function getContenutiUnitaArrayList($item) {
-
-    try {
-        $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-
-        $query->select('c.id as id');
-        $query->from('#__gg_unit_map AS a');
-        $query->join('inner', '#__gg_contenuti AS c on c.id = a.idcontenuto');
-        $query->where("idunita=" . $item);
-        $query->order('a.ordinamento');
-
-        $db->setQuery($query);
-        $data = $db->loadAssocList();
-
-        return $data;
-    }catch (Exception $e){
-
-
-
-    }
-}
-
-
 ?>
-
 
