@@ -16,13 +16,17 @@ if(utente_abilitato($userid)) {
     $display_state_esma="display:none";
     if(utente_abilitato_esma($userid)) {
         $tot_esma = 30;
-        $ore_esma = ore_esma($userid);
-        if($userid==384319327){$ore_esma=new_ore_esma($userid);}
+        //    $ore_esma = ore_esma($userid);
+        //if($userid==384319327){
+        $ore_esma=new_ore_esma($userid);
+        //}
         $percentuale_ore_esma = ($ore_esma / $tot_esma) * 100;
         $display_state_esma=null;
     }
-    $ore_ivass=ore_ivass($userid);
-    if($userid==384319327){$ore_ivass=new_ore_ivass($userid);}
+    //$ore_ivass=ore_ivass($userid);
+    //if($userid==384319327){
+    $ore_ivass=new_ore_ivass($userid);
+    //}
     $scadenza_ivass=scadenza_ivass($userid);
     $tot_ivass=totale_ivass($userid);
     //$tot_ivass=30;
@@ -131,13 +135,13 @@ function utente_abilitato_esma($userid)
 
 }
 
-function ore_esma($userid)
+/*function ore_esma($userid)
 {
     $db = JFactory::getDbo();
     //$contenuti_esma=getContenutiTema(1);
 
     //$corsi_esma=getCorsiTema(1);
-    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso 
+    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso
               where r.stato=1 and e.id_tema like '%1%' and r.id_utente=".$userid;
    // echo $query;
     $db->setQuery($query);
@@ -155,7 +159,7 @@ function ore_ivass($userid){
     $db = JFactory::getDbo();
     //$contenuti_ivass=getContenutiTema(2);
     //$corsi_ivass=getCorsiTema(2);
-    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso 
+    $query = "select sum(durata)/3600 from crg_gg_report as r INNER JOIN crg_gg_contenuti as c on r.id_contenuto=c.id inner join crg_ggif_edizione_unita_gruppo as e on e.id_unita=r.id_corso
               where r.stato=1 and e.id_tema like '%2%' and r.id_utente=".$userid;
     $db->setQuery($query);
     $ore_fad=$db->loadResult();
@@ -166,7 +170,7 @@ function ore_ivass($userid){
     //echo 'ore_fad_ivass:'.$ore_fad.'ore_res_ivass:'.$ore_res;
     return $ore_res+$ore_fad;
 }
-
+*/
 function scadenza_ivass($userid){
 
     $db = JFactory::getDbo();
@@ -235,8 +239,8 @@ function aggiusta45($ore_fad,$ore_res){
     //var_dump($anni);die;
     foreach ($anni as $anno){
 
-                //echo $anno . ' : fad:' . $ore_fad[$anno] . ' res:' . $ore_res[$anno];
-                $totale_array[$anno] = ($ore_fad[$anno]['ore'] + $ore_res[$anno]['ore'] < 46 ? $ore_fad[$anno]['ore'] + $ore_res[$anno]['ore'] : 45);
+        //echo $anno . ' : fad:' . $ore_fad[$anno] . ' res:' . $ore_res[$anno];
+        $totale_array[$anno] = ($ore_fad[$anno]['ore'] + $ore_res[$anno]['ore'] < 46 ? $ore_fad[$anno]['ore'] + $ore_res[$anno]['ore'] : 45);
 
     }
     $totale=0;
