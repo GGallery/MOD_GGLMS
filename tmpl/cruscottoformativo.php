@@ -69,32 +69,37 @@ if(utente_abilitato($userid)) {
             </div>
         </div>
     </div>
-    <div class="col-md-6" >
-        <div class="row" style="background-color: rgba(242, 185, 104, 1)">
-            <div class="col-md-12" style="margin-top: 20px;">
-                <b>AGGIORNAMENTO ANNUALE <?php echo $scadenza_ivass?></b>
+    <?php if($userid!=835364341){ ?>
+        <div class="col-md-6" >
+            <div class="row" style="background-color: rgba(242, 185, 104, 1)">
+                <div class="col-md-12" style="margin-top: 20px;">
+                    <b>AGGIORNAMENTO ANNUALE <?php echo $scadenza_ivass?></b>
+                </div>
             </div>
-        </div>
-        <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
-            <div class="col-md-12" style="margin-top: 20px; ">
-                <?php if($tot_ivass>0){ ?>
-                    <?php if($tot_ivass>$ore_ivass){ ?>
-                        <?php echo $tot_ivass?> ore entro il 31.12.2018: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-intval($ore_ivass,2)?> ore</b></span>
-                    <?php } else { ?>
-                        <b>hai completato il tuo percorso IVASS </b>
-                    <?php } ?>
-                <?php }else{ echo "errore, all'utente non è attribuito un biennio IVASS";}?>
+            <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
+                <div class="col-md-12" style="margin-top: 20px; ">
+
+                    <?php if($tot_ivass>0){ ?>
+                        <?php if($tot_ivass>$ore_ivass){ ?>
+                            <?php echo $tot_ivass?> ore entro il 31.12.2018: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-intval($ore_ivass,2)?> ore</b></span>
+                        <?php } else { ?>
+                            <b>hai completato il tuo percorso IVASS </b>
+                        <?php } ?>
+                    <?php }else{ echo "errore, all'utente non è attribuito un biennio IVASS";}?>
+
+                </div>
             </div>
-        </div>
-        <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
-            <div class="col-md-12" >
-                <div class="progress" style="margin-top: 20px; background-color: orange;">
-                    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:  <?php echo $percentuale_ore_ivass?>%">
+
+            <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
+                <div class="col-md-12" >
+                    <div class="progress" style="margin-top: 20px; background-color: orange;">
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:  <?php echo $percentuale_ore_ivass?>%">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
 </div>
 <?php
 
