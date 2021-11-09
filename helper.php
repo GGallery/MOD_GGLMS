@@ -222,7 +222,8 @@ where scaduto = 0 or scaduto is null";
         $query->from('#__gg_contenuti as c');
         $query->join('inner', '#__gg_unit_map AS m ON c.id = m.idcontenuto');
         $query->join('inner', '#__gg_unit AS u ON m.idunita = u.id');
-        $query->where('u.id ='.$unit_id );
+        $query->where('u.id = ' . $unit_id );
+		$query->where('c.pubblicato = 1');
         $query->order('c.id desc');
         $query->setLimit('1');
 

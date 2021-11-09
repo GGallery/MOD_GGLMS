@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="501bbb07-24d4-494c-a95b-b417a6fd1d2a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mod_gglms.css" beforeDir="false" afterPath="$PROJECT_DIR$/mod_gglms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mod_gglms.php" beforeDir="false" afterPath="$PROJECT_DIR$/mod_gglms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mod_gglms.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mod_gglms.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modgglmsupdate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/modgglmsupdate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/attestati.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/attestati.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/barranav.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/barranav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/corsiabilitati.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/corsiabilitati.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/corsiinscadenza.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/corsiinscadenza.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/cruscottoformativo.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/cruscottoformativo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/glossario.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/glossario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmpl/news.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmpl/news.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/helper.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="235" selection-start-line="235" selection-end-line="235" />
+              <folding>
+                <element signature="n#getAttestati#0;n#modgglmsHelper#0;n#!!top" />
+                <element signature="n#getCorsi#0;n#modgglmsHelper#0;n#!!top" />
+                <element signature="n#getCorsiInScadenza#0;n#modgglmsHelper#0;n#!!top" />
+                <element signature="n#getUltimoArticolo#0;n#modgglmsHelper#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mod_gglms.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mod_gglms.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="43" column="33" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tmpl/attestati.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="14" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tmpl/barranav.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tmpl/glossario.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>box</find>
+      <find>d573530c59deb48ef61eec1b02074f5b2685553a</find>
+      <find>appar</find>
+      <find>myTabContent</find>
+      <find>box_unit_map</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tmpl/barranav.php" />
+        <option value="$PROJECT_DIR$/mod_gglms.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-17" />
+    <option name="width" value="1220" />
+    <option name="height" value="1049" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="CatdeaLogs" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="MOD_GGLMS" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="MOD_GGLMS" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="MOD_GGLMS" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="MOD_GGLMS" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="tmpl" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562742688976" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="501bbb07-24d4-494c-a95b-b417a6fd1d2a" name="Default Changelist" comment="" />
+      <created>1562601199023</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562601199023</updated>
+      <workItem from="1562601200148" duration="1435000" />
+      <workItem from="1562742905360" duration="60000" />
+      <workItem from="1564388784920" duration="207000" />
+      <workItem from="1568791937285" duration="3816000" />
+      <workItem from="1570457848845" duration="716000" />
+      <workItem from="1571640050264" duration="71000" />
+      <workItem from="1571645649295" duration="611000" />
+      <workItem from="1636454249583" duration="361000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7277000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1442953" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Flutter Performance" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.60175693" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32650074" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Flutter Inspector" />
+      <window_info anchor="right" id="Flutter Outline" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="235" selection-start-line="235" selection-end-line="235" />
+          <folding>
+            <element signature="n#getAttestati#0;n#modgglmsHelper#0;n#!!top" />
+            <element signature="n#getCorsi#0;n#modgglmsHelper#0;n#!!top" />
+            <element signature="n#getCorsiInScadenza#0;n#modgglmsHelper#0;n#!!top" />
+            <element signature="n#getUltimoArticolo#0;n#modgglmsHelper#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod_gglms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" column="33" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmpl/attestati.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmpl/barranav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmpl/glossario.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mod_gglms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -48,7 +48,8 @@
                     <option value="corsiabilitati">I miei corsi</option>
                     <option value="corsiinscadenza">Corsi in scadenza</option>
                     <option value="news">News</option>
-                    <option value="cruscottoformativo">Cruscotto Formativo</option>
+ 		    <option value="cruscottoformativo">Cruscotto Formativo</option>
+	            <option value="formazionedacasa">Formazione da Casa</option>
 
                 </field>
                 <field
