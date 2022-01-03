@@ -3,7 +3,7 @@
 require_once JPATH_BASE . '/components/com_gginterface/models/cruscottoformativo.php';
 $user = JFactory::getUser();
 $userid = $user->get('id');
-$cruscottomodel=new  gginterfaceModelCruscottoFormativo();
+$cruscottomodel= new gginterfaceModelCruscottoFormativo();
 $display_state_esma="display:none";
 $display_state_ivass="display:none";
 $display_state="display:none;";

@@ -5,7 +5,7 @@ class modgglmsHelper {
     private static $_attestati;
     private static $_corsi;
 
-    public function getAttestati() {
+    public static function getAttestati() {
         try {
 
             $db = JFactory::getDbo();
@@ -14,29 +14,29 @@ class modgglmsHelper {
             $userid = $user->get('id');
 
 
-            $query = "SELECT DISTINCT   
-      c.corso, e.id
-      FROM
-                  #__quiz_r_student_quiz AS q
-      Inner Join  
-                 #__gg_elementi AS e ON q.c_quiz_id = e.path
-      Inner Join 
-                   #__gg_moduli AS m ON m.id = e.id_modulo
-      Inner Join  
-                   #__gg_corsi AS c ON c.id = m.id_corso
-      WHERE
-      q.c_passed = 1 
-      AND
-      e.elemento LIKE '%attestato%'
-      AND
-      c_student_id =".$userid;
+            $query = "SELECT DISTINCT
+                c.corso, e.id
+                FROM
+                            #__quiz_r_student_quiz AS q
+                Inner Join
+                            #__gg_elementi AS e ON q.c_quiz_id = e.path
+                Inner Join
+                            #__gg_moduli AS m ON m.id = e.id_modulo
+                Inner Join
+                            #__gg_corsi AS c ON c.id = m.id_corso
+                WHERE
+                q.c_passed = 1
+                AND
+                e.elemento LIKE '%attestato%'
+                AND
+                c_student_id =".$userid;
 
 
 
             $db->setQuery($query);
             if (false === ($results = $db->loadAssocList()))
 
-                throw new RuntimeException($this->_db->getErrorMsg(), E_USER_ERROR);
+                throw new RuntimeException($db->getErrorMsg(), E_USER_ERROR);
 
 
             //  if(empty($results[1]))
@@ -63,7 +63,7 @@ class modgglmsHelper {
             $userid = $user->get('id');
 
 
-            $query = "SELECT 
+            $query = "SELECT
 
     corsi_abilitati
 
@@ -71,7 +71,7 @@ class modgglmsHelper {
       SELECT
       c.corsi_abilitati, DATE_ADD(data_utilizzo,INTERVAL durata DAY) < NOW() AS scaduto
                       FROM #__gg_coupon as c
-                      WHERE id_utente =".$userid." 
+                      WHERE id_utente =".$userid."
                        AND c.abilitato = 1
 
                       ) as CP
@@ -101,9 +101,9 @@ where scaduto = 0 or scaduto is null";
             $abilitati=substr($abilitati, 1);
 
 // Associo l'ID corso al nome per esteso
-            $query = "SELECT 
+            $query = "SELECT
             *
-          FROM 
+          FROM
             #__gg_corsi as c
            where c.id in ($abilitati)";
 
@@ -231,5 +231,13 @@ where scaduto = 0 or scaduto is null";
         $contenuto=$db->loadObject();
 
         return $contenuto;
+    }
+
+    public static function normalizza_ore($v1)
+    {
+        $v2 = intval($v1) + 0.5;
+        if ($v1 < $v2) return intval($v1);
+
+        return $v1;
     }
 }
