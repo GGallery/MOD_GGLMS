@@ -1,13 +1,13 @@
 <?php
 
 require_once JPATH_BASE . '/components/com_gginterface/models/cruscottoformativo.php';
+
 $user = JFactory::getUser();
 $userid = $user->get('id');
-$cruscottomodel= new gginterfaceModelCruscottoFormativo();
+$cruscottomodel = new gginterfaceModelCruscottoFormativo();
 $display_state_esma="display:none";
 $display_state_ivass="display:none";
 $display_state="display:none;";
-$tipo_cruscotto;
 
 //if($userid!=650376498 && $userid!=878237962){return;}
 
@@ -24,36 +24,41 @@ if($abilitato_esma){
     $label_esma="Aggiornamento ESMA " . date('Y') ." da terminare entro dicembre: ore mancanti ";
     $label_esma_completo="hai completato il tuo percorso ESMA";
 
-    if($userid==652){$ore_esma=30;}
+    // eccezione ESMA
+    if ($userid==652)
+        $ore_esma=30;
+
     $percentuale_ore_esma = ($ore_esma / $tot_esma) * 100;
-    $display_state_esma=null;
-    $display_state=null;
-    if($userid==665648758 || $userid==935554742){$display_state_esma="display:none";}
-
-
-
-
+    $display_state_esma = null;
+    $display_state = null;
+    // eccezione
+    if($userid==665648758 || $userid==935554742)
+        $display_state_esma="display:none";
 
 }
 
 //INIZIA NUOVO IVASS
+$tipo_ivass = $cruscottomodel->utente_abilitato_ivass($userid);//restituisce il tipo
 
+// controllo se l'utente fa parte dell'ivass cruscotto completo
+$cruscottoCompleto = $cruscottomodel->utente_ivass_completo($userid);
+if ($cruscottoCompleto)
+    $tipo_ivass = 2;
 
-$tipo_ivass=$cruscottomodel->utente_abilitato_ivass($userid);//restituisce il tipo
-$display_state_ivass=null;
-$display_state=null;
+$display_state_ivass = null;
+$display_state = null;
 //$scadenza_ivass='2021';
 $scadenza_ivass = date('Y');
-$tot_ivass=30;
+$tot_ivass = 30;
 
-if($tipo_ivass==1) {
-    $ore_ivass=$cruscottomodel->ore_ivass($userid);
-    $percentuale_ore_ivass=($ore_ivass/$tot_ivass)*100;
+if($tipo_ivass == 1) {
+    $ore_ivass = $cruscottomodel->ore_ivass($userid);
+    $percentuale_ore_ivass = ($ore_ivass/$tot_ivass)*100;
 }
 
-if($tipo_ivass==2){
-    $ore_ivass=30;
-    $percentuale_ore_ivass=100;
+if($tipo_ivass == 2){
+    $ore_ivass = 30;
+    $percentuale_ore_ivass = 100;
 }
 
 // per decimali da .0 a .4 sarà .0
@@ -97,12 +102,7 @@ $ore_ivass = modgglmsHelper::normalizza_ore($ore_ivass);
     </div>
 
 
-
-
-
-
-
-     <?php if($tipo_ivass){?>
+    <?php if($tipo_ivass) { ?>
     <div class="col-md-6" style="<?php echo $display_state_ivass?>">
         <div class="row" style="background-color: rgba(242, 185, 104, 1);">
             <div class="col-md-12" style="margin-top: 20px;">
@@ -147,6 +147,3 @@ $ore_ivass = modgglmsHelper::normalizza_ore($ore_ivass);
 
 
 </div>
-
-
-
