@@ -1,7 +1,6 @@
 <?php
 
 require_once JPATH_BASE . '/components/com_gginterface/models/cruscottoformativo.php';
-
 $user = JFactory::getUser();
 $userid = $user->get('id');
 $cruscottomodel = new gginterfaceModelCruscottoFormativo();
@@ -21,8 +20,10 @@ if($abilitato_esma){
 	// per decimali da .0 a .4 sarà .0
 	$ore_esma = modgglmsHelper::normalizza_ore($ore_esma);
 
-    $label_esma="Aggiornamento ESMA " . date('Y') ." da terminare entro dicembre: ore mancanti ";
-    $label_esma_completo="hai completato il tuo percorso ESMA";
+	$title_esma = "AGGIORNAMENTO ANNUALE ESMA " . date('Y') . " entro dicembre";
+    //$label_esma ="Aggiornamento ESMA " . date('Y') ." da terminare entro dicembre: ore mancanti ";
+	$label_esma = "Ti mancano ";
+    $label_esma_completo = "hai completato il tuo percorso ESMA";
 
     // eccezione ESMA
     if ($userid==652)
@@ -66,84 +67,81 @@ $ore_ivass = modgglmsHelper::normalizza_ore($ore_ivass);
 
 ?>
 
-<div class="row" style="border-bottom: 1px solid #0095ad; padding-bottom: 30px;<?php echo $display_state?>">
+<div class="row mt-1" style="border-bottom: 1px solid #0095ad; padding-bottom: 30px;<?php echo $display_state?>">
 
     <div class="col-md-6" style="<?php echo $display_state_esma?>">
-        <div class="row" style="background-color: rgba(209, 237, 245, 1);">
+
+        <div class="row" style="background-color: rgba(209, 237, 245, 1); border: 1px solid #ccc; border-radius: 5px; box-shadow: 3px 1px #ccc;">
             <div class="col-md-12" style="margin-top: 20px; ">
-                <b>AGGIORNAMENTO ANNUALE ESMA</b>
-            </div>
-        </div>
+                <b><?php echo $title_esma; ?></b>
 
+                <div style="margin-top: 20px; font-size: 1.5vw;">
 
-        <div class="row" style="background-color: rgba(209, 237, 245, 1)">
+                    <?php if($tot_esma>round($ore_esma,1)){?>
 
-            <div class="col-md-12" style="margin-top: 20px; ">
-                <?php if($tot_esma>round($ore_esma,1)){?>
+                        <?php echo $label_esma?>  <span class="badge-pill" style="color: white; background-color: #0095ad;">
+                            <b><?php echo $tot_esma-round($ore_esma,1)?> ore</b></span>
+                    <?php }else{ ?>
+                        <b> <?php  echo $label_esma_completo;?></b>
+                    <?php }?>
 
-                    <?php echo $label_esma?>  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><?php echo $tot_esma-round($ore_esma,1)?></b> ore</span> </b>
-                <?php }else{ ?>
-                    <b> <?php  echo $label_esma_completo;?></b>
-                <?php }?>
-            </div>
-        </div>
-        <div class="row" style="background-color: rgba(209, 237, 245, 1);">
-            <div class="col-md-12" >
+                </div>
 
-                <div class="progress" style="margin-top: 20px; background-color: rgba(209, 237, 245, 1);">
-                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentuale_ore_esma?>%">
+                <br />
 
+                <div>
+                    <div class="progress" style="margin-top: 20px; background-color: rgba(209, 237, 245, 1);">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentuale_ore_esma?>%">
+
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
 
     </div>
 
 
     <?php if($tipo_ivass) { ?>
     <div class="col-md-6" style="<?php echo $display_state_ivass?>">
-        <div class="row" style="background-color: rgba(242, 185, 104, 1);">
+        <div class="row" style="background-color: rgba(242, 185, 104, 1); border: 1px solid #ccc; border-radius: 5px; box-shadow: 3px 1px #ccc;">
+
             <div class="col-md-12" style="margin-top: 20px;">
-                <b>AGGIORNAMENTO ANNUALE IVASS <?php echo $scadenza_ivass;?></b>
-            </div>
-        </div>
-        <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
-            <div class="col-md-12" style="margin-top: 20px; ">
+                <b>AGGIORNAMENTO ANNUALE IVASS <?php echo $scadenza_ivass;?> entro il 31.12.<?php echo date('Y'); ?></b>
 
-                <?php if($tipo_ivass==1){?>
+                <div style="margin-top: 20px; font-size: 1.5vw;">
 
-                    <?php if($tot_ivass>$ore_ivass){
-						// anche per IVASS decimali e non più interi
-						// $tot_ivass-intval($ore_ivass,2)
-					?>
-                        <?php echo $tot_ivass?> ore entro il 31.12.<?php echo date('Y'); ?>: ti mancano  <span class="label" style="font-size: large; margin-top: -4px; background-color: #0095ad;"><b><?php echo $tot_ivass-round($ore_ivass,1)?> ore</b></span>
-                    <?php } else { ?>
-                        <b>hai completato il tuo percorso IVASS </b>
-                    <?php }
-                } else { ?>
-                    <span style="font-size: large; margin-top: -4px; background-color: rgba(242, 185, 104, 1);"><b>Aggiornamento non necessario perché abilitato nell’anno in corso</b></span>
-                <?php } ?>
+                    <?php if($tipo_ivass==1){?>
 
-            </div>
-        </div>
+                        <?php if($tot_ivass>$ore_ivass){
+                            // anche per IVASS decimali e non più interi
+                            // $tot_ivass-intval($ore_ivass,2)
+                        ?>
+                            Ti mancano  <span class="badge-pill" style="color: white; background-color: #0095ad;"><b><?php echo $tot_ivass-round($ore_ivass,1)?> ore</b></span>
+                        <?php } else { ?>
+                            <b>hai completato il tuo percorso IVASS </b>
+                        <?php }
+                    } else { ?>
+                        <span style="font-size: large; margin-top: -4px; background-color: rgba(242, 185, 104, 1);"><b>Aggiornamento non necessario perché abilitato nell’anno in corso</b></span>
+                    <?php } ?>
 
-        <div class="row" style="background-color:  rgba(242, 185, 104, 1);">
-            <div class="col-md-12" >
-                <div class="progress" style="margin-top: 20px; background-color: orange;">
+                </div>
 
-                    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:  <?php echo $percentuale_ore_ivass?>%">
+                <br />
+
+                <div>
+                    <div class="progress" style="margin-top: 20px; background-color: orange;">
+
+                        <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:  <?php echo $percentuale_ore_ivass?>%">
+                        </div>
+
                     </div>
-
-
                 </div>
             </div>
         </div>
 
     </div>
-                <?php }?>
-
-
+    <?php }?>
 
 </div>
