@@ -20,7 +20,8 @@ if($abilitato_esma){
 	// per decimali da .0 a .4 sarà .0
 	$ore_esma = modgglmsHelper::normalizza_ore($ore_esma);
 
-	$title_esma = "AGGIORNAMENTO ANNUALE ESMA " . date('Y') . " entro dicembre";
+	//$title_esma = "AGGIORNAMENTO ANNUALE ESMA " . date('Y') . " entro dicembre";
+    $title_esma = "AGGIORNAMENTO ANNUALE ESMA " . date('Y') . " entro il 31.12." . date('Y');
     //$label_esma ="Aggiornamento ESMA " . date('Y') ." da terminare entro dicembre: ore mancanti ";
 	$label_esma = "Ti mancano ";
     $label_esma_completo = "hai completato il tuo percorso ESMA";
